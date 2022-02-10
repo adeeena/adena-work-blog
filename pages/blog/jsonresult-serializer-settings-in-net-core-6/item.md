@@ -28,7 +28,7 @@ This can be done using the `JsonSerializerSettings` object like so.
 >    	// Get resources here...
 >    
 >    	return new JsonResult(resources, jsonSerializerSettings);
->    }
+>     }
     
 This used to work as is with version 2 of .NET Core but with the addition of the `System.Text.Json` namespace in >v3 this will no longer work and the below error will be recieved.
 
