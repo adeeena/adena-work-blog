@@ -15,11 +15,11 @@ This can be done using the `JsonSerializerSettings` object like so.
 
 ===
 
->    public async Task<JsonResult> AuditableResources(DateTime? startDate, DateTime? endDate, string resourceType)
->    {
->    	JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings()
->    	{
->    		ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+>     public async Task<JsonResult> AuditableResources(DateTime? startDate, DateTime? endDate, string resourceType)
+>     {
+>     	JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings()
+>     	{
+>     		ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
 >    		ContractResolver = new CamelCasePropertyNamesContractResolver()
 >    	};
 >    
