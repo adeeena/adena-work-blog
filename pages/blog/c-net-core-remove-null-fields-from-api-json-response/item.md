@@ -1,18 +1,17 @@
 ---
 title: 'C# - .NET Core: Remove null fields from API JSON response'
-media_order: christina-deravedisian-6wHMi9xXPeQ-unsplash.jpg
-date: '19:43 13-03-2021'
+media_order: clark-van-der-beken-lNCJD6NXc2U-unsplash.jpg
 taxonomy:
     category:
         - 'c#'
-        - 'c# useful extensions'
+        - api
+        - JSON
     tag:
         - 'C#'
-        - 'C# Useful extensions'
-        - 'Text Processing'
+        - '.NET Core'
 hide_git_sync_repo_link: false
 hero_classes: text-dark
-hero_image: christina-deravedisian-6wHMi9xXPeQ-unsplash.jpg
+hero_image: clark-van-der-beken-lNCJD6NXc2U-unsplash.jpg
 blog_url: /blog
 show_sidebar: true
 show_breadcrumbs: true
@@ -23,42 +22,48 @@ feed:
 published: true
 ---
 
-Given the string "ThisStringHasNoSpacesButItDoesHaveCapitals" what is the best way to add spaces before the capital letters. So the end string would be "This String Has No Spaces But It Does Have Capitals"
+On a global level in .NET Core (all API responses), how can I configure `Startup.cs` so that null fields are removed/ignored in JSON responses?
 
-Here is my attempt with a RegEx:
+Using `Newtonsoft.Json`, you can apply the following attribute to a property, but I'd like to avoid having to add it to every single one:
 
->     System.Text.RegularExpressions.Regex.Replace(value, "[A-Z]", " $0")
+>     [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+>     public string FieldName { get; set; }
+>     [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+>     public string OtherName { get; set; }
 
 ===
 
 ### Solution
 
-This function
+#### .NET Core 1.0
 
->     public static string AddSpacesToSentence(this string text, bool preserveAcronyms = false)
+In `Startup.cs`, you can attach `JsonOption`s to the service collection and set various configurations, including removing null values, there:
+
+>     public void ConfigureServices(IServiceCollection services)
 >     {
->             if (string.IsNullOrWhiteSpace(text))
->                return string.Empty;
->             StringBuilder newText = new StringBuilder(text.Length * 2);
->             newText.Append(text[0]);
->             for (int i = 1; i < text.Length; i++)
->             {
->                 if (char.IsUpper(text[i]))
->                     if ((text[i - 1] != ' ' && !char.IsUpper(text[i - 1])) ||
->                         (preserveAcronyms && char.IsUpper(text[i - 1]) && 
->                          i < text.Length - 1 && !char.IsUpper(text[i + 1])))
->                         newText.Append(' ');
->                 newText.Append(text[i]);
->             }
->             return newText.ToString();
+>          services.AddMvc()
+>                  .AddJsonOptions(options => {
+>                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+>          });
 >     }
-     
 
-Will do it 100,000 times in 2,968,750 ticks, the regex will take 25,000,000 ticks (and thats with the regex compiled).
+#### .NET Core 3.1
 
-It's better, for a given value of better (i.e. faster) however it's more code to maintain. "Better" is often compromise of competing requirements.
+Instead of this line:
+
+>     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+
+Use:
+
+>     options.JsonSerializerOptions.IgnoreNullValues = true;
+
+#### .NET 5.0
+
+Instead of both variants above, use:
+
+>     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+
+The variant from .NET Core 3.1 still works, but it is marked as `NonBrowsable` (so you never get the IntelliSense hint about this parameter), so it is very likely that it is going to be obsoleted at some point.
 
 ### Source
-[StackOverflow - C# - Add spaces before Capital Letters - https://stackoverflow.com/questions/272633/add-spaces-before-capital-letters](https://stackoverflow.com/questions/272633/add-spaces-before-capital-letters)
-
-[Archive link - https://archive.ph/DvhAJ](https://archive.ph/DvhAJ)
+[StackOverflow - .NET Core: Remove null fields from API JSON response - https://stackoverflow.com/questions/44595027/net-core-remove-null-fields-from-api-json-response](https://stackoverflow.com/questions/44595027/net-core-remove-null-fields-from-api-json-response)
