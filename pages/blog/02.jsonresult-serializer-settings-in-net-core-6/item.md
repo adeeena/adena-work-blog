@@ -6,6 +6,7 @@ show_sidebar: true
 show_breadcrumbs: true
 show_pagination: true
 hide_from_post_list: false
+hero_image: annie-spratt-rnxM6fx3U5Y-unsplash.jpg
 ---
 
 If you are returning a JSON representation of an object from an MVC controller it may be necessary to determine how the JSON is formatted.
