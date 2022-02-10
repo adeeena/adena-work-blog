@@ -44,3 +44,7 @@ This can be done by adding the package `Microsoft.AspNetCore.Mvc.NewtonsoftJson`
 >         services.AddControllers()
 >             .AddNewtonsoftJson();
 >     }
+    
+    
+### Source
+[JsonResult Serializer Settings in .NET Core3.1](https://blog.bitscry.com/2020/07/20/jsonresult-serializer-settings-in-net-core3-1/)
