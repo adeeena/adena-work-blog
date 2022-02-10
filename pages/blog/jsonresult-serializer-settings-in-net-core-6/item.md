@@ -39,8 +39,8 @@ In order to fix this you need to explicitly tell the controller that Newtonsoft 
 
 This can be done by adding the package `Microsoft.AspNetCore.Mvc.NewtonsoftJson` to your project and adding the following code to the `ConfigureServices` method of your startup file.
 
->    public void ConfigureServices(IServiceCollection services)
->    {
->        services.AddControllers()
->            .AddNewtonsoftJson();
->    }
+>     public void ConfigureServices(IServiceCollection services)
+>     {
+>         services.AddControllers()
+>             .AddNewtonsoftJson();
+>     }
