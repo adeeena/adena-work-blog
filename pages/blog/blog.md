@@ -1,5 +1,5 @@
 ---
-title: Blog
+title: 'JsonResult Serializer Settings in .NET Core 6'
 media_order: gontran-isnard-v4-dQM7UMks-unsplash.jpg
 hide_git_sync_repo_link: false
 visible: true
@@ -27,3 +27,5 @@ hide_from_post_list: false
 hide_page_title: '0'
 ---
 
+
+===
