@@ -44,3 +44,5 @@ To restore the original pipe setting:
 >     $ set +o pipefail
 
 
+### Source
+[StackOverflow - Piping command output to tee but also save exit code of command](https://stackoverflow.com/questions/6871859/piping-command-output-to-tee-but-also-save-exit-code-of-command)
