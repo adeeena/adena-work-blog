@@ -25,7 +25,7 @@ How can I preserve the return code of `mvn clean install` but still piping the o
 
 ===
 
-You can set the pipefail shell option option on to get the behavior you want.
+You can set the `pipefail` shell option option on to get the behavior you want.
 
 From the Bash Reference Manual:
 
