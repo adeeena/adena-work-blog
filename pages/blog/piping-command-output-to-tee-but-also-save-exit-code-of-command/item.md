@@ -7,6 +7,7 @@ show_breadcrumbs: true
 show_pagination: true
 hide_from_post_list: false
 media_order: brina-blum-wJglNsvS9jM-unsplash.jpg
+hero_image: brina-blum-wJglNsvS9jM-unsplash.jpg
 ---
 
 I have a shell script in which I wrap a command (`mvn clean install`), to redirect the output to a logfile.
