@@ -2,8 +2,8 @@
 title: 'Automapper map into nested class'
 media_order: cole-wyland-ojkom1zKNQ0-unsplash.jpg
 taxonomy:
-    category:
-        - 'c#'
+    tag:
+        - 'C#'
         - Automapper
 hide_git_sync_repo_link: false
 blog_url: /blog
