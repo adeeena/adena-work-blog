@@ -3,7 +3,7 @@ media_order: gontran-isnard-v4-dQM7UMks-unsplash.jpg
 hide_git_sync_repo_link: false
 visible: true
 hero_classes: text-light
-hero_image: maCo_IQpxZHQiKhC3btIbR1uw6Y06aGOpibwtQYkA1E.png
+hero_image: walling-OvLXbURo9Wo-unsplash.jpg
 blog_url: /blog
 show_sidebar: true
 show_breadcrumbs: true
