@@ -42,25 +42,41 @@ In this blog we will show how to recover SA password on Microsoft SQL server by 
 ![sql-server-3](sql-server-3.png "sql-server-3")
 
 * Go to Startup Parameters tab, type `–m` to Specify a startup parameter and click on Add 
-![sql-server-6](sql-server-6.png "sql-server-6")
+![sql-server-4](sql-server-4.png "sql-server-4")
 
-* Click on Apply and then OK. 
+* Click on Apply and then OK.
+![sql-server-5](sql-server-5.png "sql-server-5") 
 
 Note: If SQL server is before 2014 we could not change startup parameter but you can check the start parameter go to Advanced and check the startup parameter.
 
 
 * Click OK on Warning which prompts after apply the changes in Startup Parameter. 
+![sql-server-6](sql-server-6.png "sql-server-6")
 
 * Now, Start SQL Server Instance.
+![sql-server-7](sql-server-7.png "sql-server-7")
+
 * Open the SQLCMD command prompt.
+![sql-server-8](sql-server-8.png "sql-server-8")
+
 * Run the command `EXEC sp_addsrvrolemember ‘DOMAIN\Username (Domain username) ‘, ‘sysadmin’;`
-Run the command `GO`.
-* Now go to SQL Server Instance clicks on Properties.
+* Run the command `GO`.
+![sql-server-9](sql-server-9.png "sql-server-9")
+
+* Now go to SQL Server Instance and click on Properties.
+![sql-server-10](sql-server-10.png "sql-server-10")
+
 * Go to Startup Parameters tab and remove startup parameter `–m` from Existing parameters after that click on Apply then OK.
+![sql-server-11](sql-server-11.png "sql-server-11")
+
 * Now stop the SQL instance again.
+![sql-server-12](sql-server-12.png "sql-server-12")
+
 * Now Open the Microsoft SQL server management.
 * Use the same account which has been added above to login.
 * Now expand the SQL server > Security > Logins and open the properties to reset SA account password.
+![sql-server-13](sql-server-13.png "sql-server-13")
+
 * The login account added is a SQL sys admin now, so it can reset the SA password.
 
 
