@@ -1,6 +1,6 @@
 ---
 title: 'How To Recover SA Password On Microsoft SQL Server'
-media_order: 'kristaps-ungurs-5mGpTvl4tfI-unsplash.jpg,sql-server-1.png,sql-server-2.png,sql-server-3.png,sql-server-5.png,sql-server-6.png,sql-server-7.png,sql-server-8.png,sql-server-9.png,sql-server-11.png,sql-server-12.png,sql-server-13.png'
+media_order: 'sql-server-1.png,sql-server-2.png,sql-server-3.png,sql-server-5.png,sql-server-6.png,sql-server-7.png,sql-server-8.png,sql-server-9.png,sql-server-11.png,sql-server-12.png,sql-server-13.png,sql-server-10.png,sql-server-4.png'
 date: '14:47 07-09-2020'
 taxonomy:
     category:
@@ -19,6 +19,7 @@ show_pagination: true
 hide_from_post_list: false
 feed:
     limit: 10
+hero_image: markus-winkler-BHB3G8iIQrA-unsplash.jpg
 ---
 
 If an SA password is ever lost then instead of re-installing SQL and re-attaching the DB, SQL Server provides a great disaster recovery method that keeps objects and data in the master DB. Members of the server’s local Administrators group can reach SQL Server by starting it in single-user mode.
