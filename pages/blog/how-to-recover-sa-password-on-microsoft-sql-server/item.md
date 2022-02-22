@@ -3,13 +3,11 @@ title: 'How To Recover SA Password On Microsoft SQL Server'
 media_order: 'sql-server-1.png,sql-server-2.png,sql-server-3.png,sql-server-5.png,sql-server-6.png,sql-server-7.png,sql-server-8.png,sql-server-9.png,sql-server-11.png,sql-server-12.png,sql-server-13.png,sql-server-10.png,sql-server-4.png'
 taxonomy:
     category:
-        - JavaScript
-        - AngularJS
-        - 'custom directive'
+        - SQL
+        - Administration
     tag:
-        - AngularJS
-        - Programming
-        - JavaScript
+        - 'Microsoft SQL Server'
+        - 'Reset password'
 hide_git_sync_repo_link: false
 blog_url: /blog
 show_sidebar: true
