@@ -20,33 +20,27 @@ feed:
     limit: 10
 ---
 
-I have an angular 2+ project and when I run it from `localhost:4200/route-a`, it works fine and when I refresh the browser, all works well as expected. However, when I build it with `ng build` and run it from a web server, navigating to `localhost/route-a` returns a 404. Here is my code for routing:
- 
->      imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot([
->         { path: 'home', component: HomeComponent },
->         { path: 'route-a', component: RouteAComponent },
->         { path: '', redirectTo: '/home', pathMatch: 'full' }
->       ])]
+I am working on upgrading some old TypeScript code to use the latest compiler version, and I'm having trouble with a call to `setTimeout`. The code expects to call the browser's `setTimeout` function which returns a number:
+
+>      setTimeout(handler: (...args: any[]) => void, timeout: number): number;
+
+However, the compiler is resolving this to the node implementation instead, which returns a `NodeJS.Timer`:
+
+ >     setTimeout(callback: (...args: any[]) => void, ms: number, ...args: any[]): NodeJS.Timer;
+
+This code does not run in node, but the node typings are getting pulled in as a dependency to something else (not sure what).
+
+How can I instruct the compiler to pick the version of setTimeout that I want?
+
+Here is the code in question:
+
+>     let n: number;
+>     n = setTimeout(function () { /* snip */  }, 500);
+
+This produces the compiler error:
+
+| TS2322: Type 'Timer' is not assignable to type 'number'.
 
 ===
 
 ### Solution
-
-In the import of the `RouterModule` where there is something like:
-
->     RouterModule.forRoot( routes )
-
-You can add the `useHash` this way:
-
->     RouterModule.forRoot( routes, { useHash: true } )
-
-then rebuild your project with the production flag and the URLs now will be like:
-
->     http://yourserver/#/page1/
-
-this way, thanks to the hash, the app will work without any problems and the only thing needed is setting the `useHash` on the `RouterModule` and rebuilding your app.
-
-### Source
-[StackOverflow - How to route in angular 4 - https://stackoverflow.com/questions/44819308/how-to-route-in-angular-4](https://stackoverflow.com/questions/44819308/how-to-route-in-angular-4)
-
-[Archive.ph link - https://archive.ph/wip/3LPBT](https://archive.ph/3LPBT)
