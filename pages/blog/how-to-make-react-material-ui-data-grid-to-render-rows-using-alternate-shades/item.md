@@ -21,7 +21,7 @@ feed:
 
 I am evaluating React-Material grid for my customer. One of the key feedback was the absence of alternate shading of rows, which impacts user experience.
 
-https://material-ui.com/components/data-grid/#mit-version
+[https://material-ui.com/components/data-grid/#mit-version](https://material-ui.com/components/data-grid/#mit-version)
 
 Is this possible?
 
