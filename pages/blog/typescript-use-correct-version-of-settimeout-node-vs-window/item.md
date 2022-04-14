@@ -3,10 +3,10 @@ title: 'TypeScript - use correct version of setTimeout (node vs window)'
 media_order: sajad-nori-WLBvvulifpk-unsplash.jpg
 taxonomy:
     category:
-        - angular
-        - routing
+        - typescript
+        - setTimeout
     tag:
-        - 'Angular 2+'
+        - TypeScript
 hide_git_sync_repo_link: false
 hero_classes: text-light
 hero_image: sajad-nori-WLBvvulifpk-unsplash.jpg
