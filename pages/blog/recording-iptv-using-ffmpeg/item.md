@@ -8,6 +8,14 @@ show_pagination: true
 hide_from_post_list: false
 feed:
     limit: 10
+media_order: ryan-spaulding-zt1o4M_HEYU-unsplash.jpg
+taxonomy:
+    category:
+        - iptv
+        - ffmpeg
+    tag:
+        - ffmpeg
+hero_image: ryan-spaulding-zt1o4M_HEYU-unsplash.jpg
 ---
 
 I don't usually watch TV. But from time to time there is something interesting on the programme, such as debates on local politics. Unfortunately, those usually run at a time of day where I'm not able (or more likely not willing) to tune in an pay attention to an hour of political discourse. So I want to record them and watch later instead.
