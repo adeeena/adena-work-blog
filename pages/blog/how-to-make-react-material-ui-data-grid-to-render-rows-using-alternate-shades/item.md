@@ -1,15 +1,15 @@
 ---
 title: 'How to make React-Material UI data grid to render rows using alternate shades?'
-media_order: sajad-nori-WLBvvulifpk-unsplash.jpg
+media_order: 'eberhard-grossgasteiger-2R8Sz0dHMj0-unsplash.jpg,uiAdu.png,HlD8X.png'
 taxonomy:
     category:
-        - typescript
-        - setTimeout
+        - react
+        - 'material react'
     tag:
-        - TypeScript
+        - React
 hide_git_sync_repo_link: false
 hero_classes: text-light
-hero_image: sajad-nori-WLBvvulifpk-unsplash.jpg
+hero_image: eberhard-grossgasteiger-2R8Sz0dHMj0-unsplash.jpg
 blog_url: /blog
 show_sidebar: true
 show_breadcrumbs: true
@@ -19,38 +19,37 @@ feed:
     limit: 10
 ---
 
-I am working on upgrading some old TypeScript code to use the latest compiler version, and I'm having trouble with a call to `setTimeout`. The code expects to call the browser's `setTimeout` function which returns a number:
+I am evaluating React-Material grid for my customer. One of the key feedback was the absence of alternate shading of rows, which impacts user experience.
 
->      setTimeout(handler: (...args: any[]) => void, timeout: number): number;
+https://material-ui.com/components/data-grid/#mit-version
 
-However, the compiler is resolving this to the node implementation instead, which returns a `NodeJS.Timer`:
+Is this possible?
 
- >     setTimeout(callback: (...args: any[]) => void, ms: number, ...args: any[]): NodeJS.Timer;
+Actual
+![HlD8X](HlD8X.png "HlD8X")
 
-This code does not run in node, but the node typings are getting pulled in as a dependency to something else (not sure what).
-
-How can I instruct the compiler to pick the version of setTimeout that I want?
-
-Here is the code in question:
-
->     let n: number;
->     n = setTimeout(function () { /* snip */  }, 500);
-
-This produces the compiler error:
-
-> TS2322: Type 'Timer' is not assignable to type 'number'.
+Desired
+![uiAdu](uiAdu.png "uiAdu")
 
 ===
 
 ### Solution
 
->     let timer: ReturnType<typeof setTimeout> = setTimeout(() => { ... });
+It's pretty simple to add in via a CSS selector.
 
->     clearTimeout(timer);
-    
-By using `ReturnType<fn>` you are getting independence from platform. You won't be forced to use neither any nor `window.setTimeout` which will break if you run the code on nodeJS server (eg. server-side rendered page).
+If you add a selector for the odd rows `.Mui-odd`, then you can set the color of the background and make it striped. You could use `.Mui-even` instead for the other half.
+
+>     .MuiDataGrid-row.Mui-odd {
+>       background-color: aliceblue;
+>     }
+
+If you wanted to use `:nth-child`, then you'd need `:nth-child(even)` for the same set of rows as `.Mui-odd`, though `.Mui-odd` keeps up it's ordering between pages, where the psuedo selector doesn't.
+
+>     .MuiDataGrid-row:nth-child(even){
+>       background-color: aliceblue;
+>     }
 
 
 ### Source
     
-[StackOverflow - TypeScript - use correct version of setTimeout (node vs window)](https://stackoverflow.com/questions/45802988/typescript-use-correct-version-of-settimeout-node-vs-window)
+[StackOverflow - How to make React-Material UI data grid to render rows using alternate shades?](https://stackoverflow.com/questions/64682097/how-to-make-react-material-ui-data-grid-to-render-rows-using-alternate-shades)
