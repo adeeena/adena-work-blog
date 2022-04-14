@@ -1,7 +1,6 @@
 ---
 title: 'TypeScript - use correct version of setTimeout (node vs window)'
 media_order: jack-delulio-y8vqhMsKLuA-unsplash.jpg
-date: '19:35 13-03-2021'
 taxonomy:
     category:
         - angular
