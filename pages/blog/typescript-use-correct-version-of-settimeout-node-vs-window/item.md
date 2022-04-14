@@ -1,6 +1,6 @@
 ---
 title: 'TypeScript - use correct version of setTimeout (node vs window)'
-media_order: jack-delulio-y8vqhMsKLuA-unsplash.jpg
+media_order: sajad-nori-WLBvvulifpk-unsplash.jpg
 taxonomy:
     category:
         - angular
@@ -38,8 +38,19 @@ Here is the code in question:
 
 This produces the compiler error:
 
-| TS2322: Type 'Timer' is not assignable to type 'number'.
+> TS2322: Type 'Timer' is not assignable to type 'number'.
 
 ===
 
 ### Solution
+
+>     let timer: ReturnType<typeof setTimeout> = setTimeout(() => { ... });
+
+>     clearTimeout(timer);
+    
+By using `ReturnType<fn>` you are getting independence from platform. You won't be forced to use neither any nor `window.setTimeout` which will break if you run the code on nodeJS server (eg. server-side rendered page).
+
+
+### Source
+    
+[StackOverflow - TypeScript - use correct version of setTimeout (node vs window)](https://stackoverflow.com/questions/45802988/typescript-use-correct-version-of-settimeout-node-vs-window)
