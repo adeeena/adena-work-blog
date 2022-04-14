@@ -9,7 +9,7 @@ taxonomy:
         - 'Angular 2+'
 hide_git_sync_repo_link: false
 hero_classes: text-light
-hero_image: jack-delulio-y8vqhMsKLuA-unsplash.jpg
+hero_image: sajad-nori-WLBvvulifpk-unsplash.jpg
 blog_url: /blog
 show_sidebar: true
 show_breadcrumbs: true
